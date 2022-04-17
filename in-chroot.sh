@@ -12,9 +12,10 @@ pacman -S grub efibootmgr networkmanager network-manager-applet base-devel linux
 # optional
 
 # pacman -S --noconfirm xf86-video-amdgpu
-# pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 # pacman -S --noconfirm intel-ucode
 # pacman -S --noconfirm amd-ucode
+# pacman -S --noconfirm broadcom-wl-dkms # mac
+# pacman -S --noconfirm os-prober 
 
 passwd
 
