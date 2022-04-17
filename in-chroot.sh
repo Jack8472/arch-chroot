@@ -28,7 +28,7 @@ systemctl enable fstrim.timer
 systemctl enable lightdm.service
 systemctl enable ufw.service
 systemctl enable plocate-updatedb.timer
-stemctl enable btrfs-scrub@-.timer 
+systemctl enable btrfs-scrub@-.timer 
 systemctl enable btrfs-scrub@home.timer 
 
 printf "Next: set hostname; add user+pass and make sudoer."
