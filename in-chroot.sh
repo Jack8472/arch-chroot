@@ -22,5 +22,9 @@ systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable lightdm.service
 systemctl enable ufw.service
+stemctl enable btrfs-scrub@-.timer 
+systemctl enable btrfs-scrub@home.timer 
+
+localectl set-x11-keymap pl "" "" caps:escape,compose:prsc,compose:menu,terminate:ctrl_alt_bksp,eurosign:4
 
 printf "Next: set root password; set hostname; add user and make sudoer."
