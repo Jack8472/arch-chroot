@@ -17,6 +17,7 @@ pacman -S grub efibootmgr networkmanager network-manager-applet base-devel linux
 # pacman -S --noconfirm broadcom-wl-dkms # mac
 # pacman -S --noconfirm os-prober 
 
+vim /etc/hostname
 passwd
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
@@ -31,4 +32,4 @@ systemctl enable plocate-updatedb.timer
 systemctl enable btrfs-scrub@-.timer 
 systemctl enable btrfs-scrub@home.timer 
 
-printf "Next: set hostname; add user+pass and make sudoer."
+printf "Next: add user+pass and make sudoer."
