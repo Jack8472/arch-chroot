@@ -32,4 +32,6 @@ systemctl enable plocate-updatedb.timer
 systemctl enable btrfs-scrub@-.timer 
 systemctl enable btrfs-scrub@home.timer 
 
+timedatectl set-ntp true
+
 printf "Next: add user+pass and make sudoer."
