@@ -17,6 +17,7 @@ pacman -Syy grub efibootmgr networkmanager network-manager-applet base-devel lin
 # optional
 
 # pacman -S --noconfirm xf86-video-amdgpu
+# pacman -S --noconfirm xf86-video-vmware
 # pacman -S --noconfirm intel-ucode
 # pacman -S --noconfirm amd-ucode
 # pacman -S --noconfirm broadcom-wl-dkms # mac
