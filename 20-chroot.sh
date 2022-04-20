@@ -43,7 +43,7 @@ timedatectl set-ntp true
 
 echo "Setting up user:"
 read -p "Username:" username
-useradd $username
+useradd $username # WARNING: consider -m flag
 usermod -aG wheel $username
 passwd $username
 chsh -s /usr/bin/fish $username
