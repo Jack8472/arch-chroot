@@ -21,7 +21,6 @@ pacman -Syy efibootmgr networkmanager network-manager-applet base-devel linux-he
 # pacman -S --noconfirm xf86-video-vmware
 # pacman -S --noconfirm intel-ucode
 # pacman -S --noconfirm amd-ucode
-# pacman -S --noconfirm broadcom-wl-dkms # mac
 # pacman -S --noconfirm os-prober 
 
 vim /etc/hostname
