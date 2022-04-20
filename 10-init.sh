@@ -6,9 +6,9 @@ if ! grep -qs '/mnt' /proc/mounts; then
 fi
 
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-reflector --latest 50 --protocol https --sort rate --number 5 --save /etc/pacman.d/mirrorlist
-pacman -Syyu
-pacstrap /mnt base linux linux-firmware 
+reflector --latest 20 --protocol https --sort rate --number 5 --save /etc/pacman.d/mirrorlist
+pacman -Syy
+pacstrap /mnt base linux linux-firmware vim
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
