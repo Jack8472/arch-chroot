@@ -10,7 +10,7 @@ echo "KEYMAP=pl" >> /etc/vconsole.conf
 sed -i '33s/.//' /etc/pacman.conf
 sed -i '37s/.//' /etc/pacman.conf
 
-reflector --latest 50 --protocol https --sort rate --number 5 --save /etc/pacman.d/mirrorlist
+reflector --latest 20 --protocol https --sort rate --number 5 --save /etc/pacman.d/mirrorlist
 
 pacman -Syy grub efibootmgr networkmanager network-manager-applet base-devel linux-headers pipewire pipewire-alsa pipewire-pulse pipewire-jack plocate ufw xorg-server ttf-iosevka-nerd qtile picom git fish sudo btrfs-progs vim xfce4 lightdm lightdm-gtk-greeter alacritty emacs ttc-iosevka-aile xorg-server firefox
 
@@ -24,6 +24,7 @@ pacman -Syy grub efibootmgr networkmanager network-manager-applet base-devel lin
 # pacman -S --noconfirm os-prober 
 
 vim /etc/hostname
+echo "Setting root password:"
 passwd
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
@@ -40,4 +41,13 @@ systemctl enable btrfs-scrub@home.timer
 
 timedatectl set-ntp true
 
-printf "Next: add user+pass and make sudoer."
+echo "Setting up user:"
+read -p "Username:" username
+useradd $username
+usermod -aG wheel $username
+passwd $username
+chsh -s /usr/bin/fish $username
+chsh -s /usr/bin/fish root
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+
+printf "Done. Exit and reboot."
