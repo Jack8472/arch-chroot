@@ -8,7 +8,7 @@ fi
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 reflector --latest 20 --protocol https --sort rate --number 5 --save /etc/pacman.d/mirrorlist
 pacman -Syy
-pacstrap /mnt base linux linux-firmware vim
+pacstrap /mnt base linux linux-firmware vim reflector
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
