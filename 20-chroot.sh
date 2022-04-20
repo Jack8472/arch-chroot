@@ -10,7 +10,11 @@ echo "KEYMAP=pl" >> /etc/vconsole.conf
 sed -i '33s/.//' /etc/pacman.conf
 sed -i '37s/.//' /etc/pacman.conf
 
-pacman -S grub efibootmgr networkmanager network-manager-applet base-devel linux-headers pipewire pipewire-alsa pipewire-pulse pipewire-jack reflector plocate ufw xorg-server ttf-iosevka-nerd qtile picom git fish sudo btrfs-progs vim xfce4 lightdm lightdm-gtk-greeter alacritty emacs ttc-iosevka-aile xorg-server firefox
+pacman -S reflector
+
+reflector --latest 50 --protocol https --sort rate --number 5 --save /etc/pacman.d/mirrorlist
+
+pacman -Syy grub efibootmgr networkmanager network-manager-applet base-devel linux-headers pipewire pipewire-alsa pipewire-pulse pipewire-jack plocate ufw xorg-server ttf-iosevka-nerd qtile picom git fish sudo btrfs-progs vim xfce4 lightdm lightdm-gtk-greeter alacritty emacs ttc-iosevka-aile xorg-server firefox
 
 # optional
 
