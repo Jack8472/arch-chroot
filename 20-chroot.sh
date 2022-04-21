@@ -48,6 +48,6 @@ usermod -aG wheel $username
 passwd $username
 chsh -s /usr/bin/fish $username
 chsh -s /usr/bin/fish root
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/wheel
 
 printf "Done. Exit and reboot."
