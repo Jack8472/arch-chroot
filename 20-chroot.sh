@@ -2,7 +2,6 @@
 
 ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 hwclock --systohc
-# sed -i 's/^# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
@@ -58,7 +57,7 @@ ufw enable
 
 echo "Setting up user:"
 read -p "Username:" username
-useradd $username # WARNING: consider -m flag
+useradd -m $username 
 usermod -aG wheel $username
 passwd $username
 chsh -s /usr/bin/fish $username
