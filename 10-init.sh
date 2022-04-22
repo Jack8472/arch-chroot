@@ -17,7 +17,5 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 cp $SCRIPT_DIR/20-chroot.sh /mnt/
 chmod +x /mnt/20-chroot.sh
-cp $SCRIPT_DIR/30-config.sh /mnt
-chmod +x /mnt/30-config.sh
 
 echo "Do arch-chroot!"
