@@ -2,12 +2,11 @@
 
 ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 hwclock --systohc
-sed -i '178s/.//' /etc/locale.gen
+# sed -i 's/^# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
-echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-echo "KEYMAP=pl" >> /etc/vconsole.conf
-
-reflector --latest 20 --protocol https --sort rate --number 5 --save /etc/pacman.d/mirrorlist
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "KEYMAP=pl" > /etc/vconsole.conf
 
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sed -i 's/^#Color/Color/' /etc/pacman.conf
@@ -15,7 +14,19 @@ reflector --latest 20 --protocol https --sort rate --number 5 --save /etc/pacman
 
 pacman -Syy efibootmgr networkmanager network-manager-applet base-devel linux-headers pipewire pipewire-alsa pipewire-pulse pipewire-jack plocate ufw xorg-server ttf-iosevka-nerd qtile picom git fish sudo xfce4 lightdm lightdm-gtk-greeter alacritty emacs ttc-iosevka-aile xorg-server firefox
 
-# optional
+# Chaotic
+pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key FBA220DFC880C036
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+
+echo -ne "
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+" >> /etc/pacman.conf
+
+pacman -Syy yay 
+
+# Optional
 
 # pacman -S --noconfirm xf86-video-amdgpu
 # pacman -S --noconfirm xf86-video-vmware
@@ -23,8 +34,11 @@ pacman -Syy efibootmgr networkmanager network-manager-applet base-devel linux-he
 # pacman -S --noconfirm amd-ucode
 # pacman -S --noconfirm os-prober 
 
-vim /etc/hostname
-echo "Setting root password:"
+echo "Setting up hostname:"
+read -p "Hostname:" myhostname
+echo "$myhostname" > /etc/hostname
+
+echo "Setting up root password:"
 passwd
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
@@ -40,6 +54,7 @@ systemctl enable btrfs-scrub@-.timer
 systemctl enable btrfs-scrub@home.timer 
 
 timedatectl set-ntp true
+ufw enable
 
 echo "Setting up user:"
 read -p "Username:" username

@@ -1,9 +1,11 @@
 #!/bin/sh
 
 if ! grep -qs '/mnt' /proc/mounts; then
-    echo "Drive is not mounted can not continue"
-    exit
+    echo "Drives not mounted, will not continue."
+    exit 2
 fi
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sed -i 's/^#Color/Color/' /etc/pacman.conf
@@ -13,9 +15,9 @@ pacstrap /mnt base linux linux-firmware vim reflector grub btrfs-progs
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cp 20-chroot.sh /mnt/
+cp $SCRIPT_DIR/20-chroot.sh /mnt/
 chmod +x /mnt/20-chroot.sh
-cp 30-config.sh /mnt
+cp $SCRIPT_DIR/30-config.sh /mnt
 chmod +x /mnt/30-config.sh
 
-echo "Do arch-chroot now..."
+echo "Do arch-chroot!"
