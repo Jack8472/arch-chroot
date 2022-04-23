@@ -15,6 +15,7 @@ pacstrap /mnt base linux linux-firmware vim reflector grub btrfs-progs
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
+cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 cp $SCRIPT_DIR/20-chroot.sh /mnt/
 chmod +x /mnt/20-chroot.sh
 
