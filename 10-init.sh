@@ -5,7 +5,7 @@ if ! grep -qs '/mnt' /proc/mounts; then
     exit 2
 fi
 
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+SCRIPT_DIR="$( cd -- "$( dirname -- "$0" )" &> /dev/null && pwd )"
 
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sed -i 's/^#Color/Color/' /etc/pacman.conf
