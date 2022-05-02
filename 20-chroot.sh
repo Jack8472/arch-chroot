@@ -10,7 +10,7 @@ echo "KEYMAP=pl" > /etc/vconsole.conf
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sed -i 's/^#Color/Color/' /etc/pacman.conf
 
-pacman -Syy efibootmgr networkmanager network-manager-applet base-devel linux-headers pipewire pipewire-alsa pipewire-pulse pipewire-jack plocate ufw xorg-server ttf-iosevka-nerd qtile picom git fish sudo xfce4 lightdm lightdm-gtk-greeter alacritty emacs ttc-iosevka-aile xorg-server firefox
+pacman -Syy efibootmgr networkmanager network-manager-applet base-devel linux-headers pipewire pipewire-alsa pipewire-pulse pipewire-jack plocate ufw xorg-server ttf-dejavu ttf-liberation ttf-iosevka-nerd ttc-iosevka-aile ttf-linux-libertine qtile picom git fish sudo xfce4 lightdm lightdm-gtk-greeter alacritty emacs xorg-server firefox
 
 # Chaotic
 pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
