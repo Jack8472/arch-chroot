@@ -20,7 +20,7 @@ echo -ne "
 Include = /etc/pacman.d/chaotic-mirrorlist
 " >> /etc/pacman.conf
 
-pacman -Syy efibootmgr networkmanager network-manager-applet base-devel linux-headers pipewire pipewire-alsa pipewire-pulse pipewire-jack plocate ufw xorg-server ttf-dejavu ttf-liberation ttf-iosevka-nerd qtile picom git fish sudo xfce4 lightdm lightdm-gtk-greeter alacritty emacs xorg-server firefox yay
+pacman -Syy efibootmgr networkmanager network-manager-applet base-devel linux-headers xorg-server pipewire pipewire-alsa pipewire-pulse pipewire-jack plocate ufw xorg-server ttf-dejavu ttf-liberation ttf-iosevka-nerd qtile picom git fish sudo xfce4 lightdm lightdm-gtk-greeter alacritty emacs-nativecomp firefox yay
 
 # Optional
 
