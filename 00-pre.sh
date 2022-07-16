@@ -15,4 +15,7 @@ timedatectl set-ntp true
 
 chmod +x $SCRIPT_DIR/10-init.sh
 
+pacman -S --noconfirm figlet
+
+figlet "DONE"
 echo "DONE: loadkeys, timedatectl, +x 10-init.sh NOW: (1) Setup partitions! I recommend cfdisk. (2) Make filesystems. (3) Mount filesystems. (4) Run 10-init.sh."
