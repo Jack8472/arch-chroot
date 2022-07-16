@@ -15,4 +15,4 @@ timedatectl set-ntp true
 
 chmod +x $SCRIPT_DIR/10-init.sh
 
-echo "Setup and mount partitions!"
+echo "DONE: loadkeys, timedatectl, +x 10-init.sh NOW: Setup and mount partitions! I recommend cfdisk."
