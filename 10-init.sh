@@ -24,4 +24,4 @@ echo "cp & +x 20-chroot.sh..."
 cp $SCRIPT_DIR/20-chroot.sh /mnt/
 chmod +x /mnt/20-chroot.sh
 
-echo "Do arch-chroot!"
+echo "DO: arch-chroot /mnt"
