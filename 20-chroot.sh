@@ -28,7 +28,11 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 " >> /etc/pacman.conf
 
 echo  "=> $(tput setaf 2 bold) Installing favourite packages...$(tput sgr0)"
-pacman -Syy --needed efibootmgr networkmanager network-manager-applet base-devel linux-headers xorg-server pipewire pipewire-alsa pipewire-pulse pipewire-jack plocate ufw xorg-server ttf-dejavu ttf-liberation ttf-iosevka-nerd qtile picom git fish sudo xfce4 lightdm lightdm-gtk-greeter alacritty emacs-nativecomp firefox yay chezmoi
+pacman -Syy --needed efibootmgr networkmanager network-manager-applet base-devel \
+       linux-headers xorg-server pipewire pipewire-alsa pipewire-pulse pipewire-jack \
+       plocate ufw xorg-server ttf-dejavu ttf-liberation ttf-iosevka-nerd qtile picom \
+       git fish sudo xfce4 lightdm lightdm-gtk-greeter alacritty emacs-nativecomp \
+       firefox yay chezmoi
 
 # Optional
 
@@ -45,7 +49,7 @@ echo "$myhostname" > /etc/hostname
 echo  "=> $(tput setaf 5 bold) Setting up root password:$(tput sgr0)"
 passwd
 
-echo  "=> $(tput setaf 2 bold) Installing grub...$(tput sgr0)"
+echo  "=> $(tput setaf 2 bold) Installing bootloader...$(tput sgr0)"
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
 grub-mkconfig -o /boot/grub/grub.cfg
 
