@@ -28,7 +28,7 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 " >> /etc/pacman.conf
 
 echo  "=> $(tput setaf 2 bold) Installing favourite packages...$(tput sgr0)"
-pacman -Syy --needed efibootmgr networkmanager network-manager-applet base-devel \
+pacman -Syy --needed --noconfirm efibootmgr networkmanager network-manager-applet base-devel \
        linux-headers xorg-server pipewire pipewire-alsa pipewire-pulse pipewire-jack \
        plocate ufw xorg-server ttf-dejavu ttf-liberation ttf-iosevka-nerd qtile picom \
        git fish sudo chezmoi yay lightdm lightdm-gtk-greeter alacritty  \
@@ -50,9 +50,9 @@ echo  "=> $(tput setaf 5 bold) Setting up root password:$(tput sgr0)"
 passwd
 
 echo  "=> $(tput setaf 2 bold) Installing bootloader...$(tput sgr0)"
-# grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
-# grub-mkconfig -o /boot/grub/grub.cfg
-bootctl install
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
+grub-mkconfig -o /boot/grub/grub.cfg
+# bootctl install
 
 echo  "=> $(tput setaf 2 bold) Enabling services...$(tput sgr0)"
 systemctl enable NetworkManager
@@ -63,9 +63,6 @@ systemctl enable ufw.service
 systemctl enable plocate-updatedb.timer
 systemctl enable btrfs-scrub@-.timer 
 systemctl enable btrfs-scrub@home.timer 
-
-echo  "=> $(tput setaf 2 bold) timedatectl...$(tput sgr0)"
-timedatectl set-ntp true
 
 echo  "=> $(tput setaf 2 bold) Enabling uncomplicated firewall...$(tput sgr0)"
 ufw enable
