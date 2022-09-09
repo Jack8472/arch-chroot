@@ -50,8 +50,9 @@ echo  "=> $(tput setaf 5 bold) Setting up root password:$(tput sgr0)"
 passwd
 
 echo  "=> $(tput setaf 2 bold) Installing bootloader...$(tput sgr0)"
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
-grub-mkconfig -o /boot/grub/grub.cfg
+# grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
+# grub-mkconfig -o /boot/grub/grub.cfg
+bootctl install
 
 echo  "=> $(tput setaf 2 bold) Enabling services...$(tput sgr0)"
 systemctl enable NetworkManager
