@@ -29,10 +29,13 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 
 echo  "=> $(tput setaf 2 bold) Installing favourite packages...$(tput sgr0)"
 pacman -Syy --needed --noconfirm efibootmgr networkmanager network-manager-applet base-devel \
-       linux-headers xorg-server pipewire pipewire-alsa pipewire-pulse pipewire-jack \
-       plocate ufw xorg-server ttf-dejavu ttf-liberation ttf-iosevka-nerd qtile picom \
-       git fish sudo chezmoi yay lightdm lightdm-gtk-greeter alacritty  \
-       firefox xfce4 emacs-nativecomp # big ones, consider commenting
+       linux-headers xorg-server lightdm lightdm-gtk-greeter \
+       pipewire pipewire-alsa pipewire-pulse pipewire-jack \
+       plocate ufw \
+       ttf-dejavu ttf-liberation ttf-iosevka-nerd \
+       qtile picom \
+       git fish sudo chezmoi yay alacritty # \
+       # firefox xfce4 emacs-nativecomp # big ones, consider uncommenting
 
 # Optional
 
