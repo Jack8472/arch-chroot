@@ -16,17 +16,6 @@ echo  "=> $(tput setaf 2 bold) Tweaking pacman.conf...$(tput sgr0)"
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sed -i 's/^#Color/Color/' /etc/pacman.conf
 
-# Chaotic
-echo  "=> $(tput setaf 2 bold) Setting up chaotic-aur...$(tput sgr0)"
-pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
-pacman-key --lsign-key FBA220DFC880C036
-pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-
-echo -ne "
-[chaotic-aur]
-Include = /etc/pacman.d/chaotic-mirrorlist
-" >> /etc/pacman.conf
-
 echo  "=> $(tput setaf 2 bold) Installing favourite packages...$(tput sgr0)"
 pacman -Syy --needed --noconfirm efibootmgr networkmanager network-manager-applet base-devel \
        linux-headers xorg-server lightdm lightdm-gtk-greeter \
